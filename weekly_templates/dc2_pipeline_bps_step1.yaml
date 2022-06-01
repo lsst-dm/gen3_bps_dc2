@@ -1,0 +1,42 @@
+pipelineYaml: "$DRP_PIPE_DIR/pipelines/LSSTCam-imSim/DRP-test-med-1.yaml#step1"
+# qgraphFile: /scratch/brendal4/bps-gen3-dc2/submit/2.2i/runs/test-med-1/w_2021_40/DM-32024/20211005T175202Z/2.2i_runs_test-med-1_w_2021_40_DM-32024_20211005T175202Z.qgraph
+
+bpsUseShared: true
+
+project: DC2
+campaign: DC2_wNUMBER
+
+payload:
+  payloadName: test-med-1-rerun-wNUMBER
+  butlerConfig: /repo/dc2/butler.yaml
+  inCollection: 2.2i/defaults/test-med-1
+  #inCollection: 2.2i/defaults/ci_imsim
+  output: "2.2i/runs/test-med-1/w_WEEKLY/DM-TICKETNUM"
+  #output: "u/brendal4/test_ci_imsim_w40"
+  dataQuery: instrument = 'LSSTCam-imSim' and skymap='DC2'
+  #dataQuery: instrument = 'LSSTCam-imSim' and tract in (3828, 3829) and skymap='DC2'
+
+pipetask:
+  assembleCoadd:
+    requestMemory: 16384
+  deblend:
+    requestMemory: 8192
+  makeWarp:
+    requestMemory: 8192
+  singleFrame:
+    requestMemory: 2048
+  writeObjectTable:
+    requestMemory: 8192
+  diffimDRP:
+    requestMemory: 8192
+  matchCatalogsPatchMultiBand:
+    requestMemory: 8196
+  matchCatalogsTract:
+    requestMemory: 32000
+  wPerp:
+    requestMemory: 32000
+  TE1:
+    requestMemory: 16384
+  TE2:
+    requestMemory: 16384
+
