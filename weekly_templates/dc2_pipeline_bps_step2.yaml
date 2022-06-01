@@ -9,11 +9,8 @@ payload:
   payloadName: test-med-1-rerun-wNUMBER
   butlerConfig: /repo/dc2/butler.yaml
   inCollection: 2.2i/defaults/test-med-1
-  #inCollection: 2.2i/defaults/ci_imsim
   output: "2.2i/runs/test-med-1/w_WEEKLY/DM-TICKETNUM"
-  #output: "u/brendal4/test_ci_imsim_w40"
   dataQuery: instrument = 'LSSTCam-imSim' and skymap='DC2'
-  #dataQuery: instrument = 'LSSTCam-imSim' and tract in (3828, 3829) and skymap='DC2'
 
 pipetask:
   assembleCoadd:
@@ -38,4 +35,3 @@ pipetask:
     requestMemory: 16384
   TE2:
     requestMemory: 16384
-
