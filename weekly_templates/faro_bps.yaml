@@ -1,0 +1,25 @@
+pipelineYaml: $FARO_DIR/pipelines/metrics_pipeline.yaml
+project: DC2
+campaign: reprocessing
+
+payload:
+  payloadName: faro-rerun-w_WEEKLYSUFFIX
+  butlerConfig: /repo/dc2/butler.yaml
+  inCollection: 2.2i/runs/test-med-1/w_WEEKLY/DM-TICKETNUM
+  output: "2.2i/runs/test-med-1/w_WEEKLY/DM-TICKETNUM"
+  dataQuery: instrument = 'LSSTCam-imSim' and tract in (3828, 3829) and skymap='DC2'
+
+pipetask:
+  matchCatalogsPatchMultiBand:
+    requestMemory: 8196
+  matchCatalogsTract:
+    requestMemory: 32000
+  wPerp:
+    requestMemory: 32000
+  TE1:
+    requestMemory: 16384
+  TE2:
+    requestMemory: 16384
+
+executionButler:
+  command2: ""
